@@ -11,43 +11,83 @@ final class ViewController: UIViewController {
     
     let tableview = UITableView()
     var model: Model?
+    let backView = UIView()
+    let loader = UIActivityIndicatorView()
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableview)
+        view.addSubview(backView)
+        backView.addSubview(loader)
         setConstraints()
         setUI()
         getData()
-        
     }
     
     private func getData() {
+        showLoader()
         Task {
             do {
                 let response = try await Network.shared.fetchData()
                 model = response
                 tableview.reloadData()
-                print("ROW HEIGHT: \(tableview.rowHeight)")
+                hideLoader()
             } catch {
                 print(error.localizedDescription)
+                hideLoader()
             }
         }
     }
     
     private func setConstraints() {
         tableview.frame = view.frame
+        backView.frame = view.frame
+        loader.frame = backView.frame
+        
     }
     
     private func setUI() {
-        tableview.backgroundColor = .green
+       
+        tableview.backgroundColor = bgColor
         tableview.register(TableviewCell.self, forCellReuseIdentifier: "cell")
         tableview.delegate = self
         tableview.dataSource = self
         tableview.showsVerticalScrollIndicator = false
         tableview.separatorColor = .red
         tableview.rowHeight = UITableView.automaticDimension
-        tableview.estimatedRowHeight = 80
+        tableview.estimatedRowHeight = isIpad() ? 100 : 80
         
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        
+        backView.backgroundColor = .black.withAlphaComponent(0.7)
+        loader.color = .white
+        loader.style = .large
+        
+        tableview.addSubview(refreshControl)
+    }
+    
+    @objc private func refreshTableView() {
+        getData()
+    }
+    
+    
+    private func showLoader() {
+        UIView.animate(withDuration: 0.3) {
+            self.backView.isHidden = false
+            self.loader.isHidden = false
+            self.loader.startAnimating()
+        }
+    }
+    
+    private func hideLoader() {
+        UIView.animate(withDuration: 0.3) {
+            self.refreshControl.endRefreshing()
+            self.backView.isHidden = true
+            self.loader.isHidden = true
+            self.loader.stopAnimating()
+           
+        }
     }
 }
 

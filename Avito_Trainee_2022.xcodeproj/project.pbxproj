@@ -14,6 +14,7 @@
 		3FD545D72BC271510045BAD3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD545D62BC271510045BAD3 /* Model.swift */; };
 		3FD545D92BC272660045BAD3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD545D82BC272660045BAD3 /* Network.swift */; };
 		3FD545DB2BC279330045BAD3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD545DA2BC279330045BAD3 /* TableViewCell.swift */; };
+		3FD545DD2BC29D700045BAD3 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD545DC2BC29D700045BAD3 /* Support.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3FD545D62BC271510045BAD3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3FD545D82BC272660045BAD3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3FD545DA2BC279330045BAD3 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		3FD545DC2BC29D700045BAD3 /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				3FD545D62BC271510045BAD3 /* Model.swift */,
 				3FD545D82BC272660045BAD3 /* Network.swift */,
 				3F3278262BC184AB002946B3 /* ViewController.swift */,
+				3FD545DC2BC29D700045BAD3 /* Support.swift */,
 				3FD545DA2BC279330045BAD3 /* TableViewCell.swift */,
 				3F32782B2BC184AD002946B3 /* Assets.xcassets */,
 				3F32782D2BC184AD002946B3 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				3F3278272BC184AB002946B3 /* ViewController.swift in Sources */,
 				3FD545D92BC272660045BAD3 /* Network.swift in Sources */,
 				3F3278232BC184AB002946B3 /* AppDelegate.swift in Sources */,
+				3FD545DD2BC29D700045BAD3 /* Support.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

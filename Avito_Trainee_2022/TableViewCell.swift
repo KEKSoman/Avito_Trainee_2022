@@ -37,20 +37,24 @@ class TableviewCell: UITableViewCell {
         stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         stack.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         stack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
+        stack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10).isActive = true
     }
     
     private func setUI() {
+        self.backgroundColor = .systemPink
         [name, phoneNumber, skills].forEach { item in
             item.translatesAutoresizingMaskIntoConstraints = false
             item.textAlignment = .left
             item.textColor = .black
-            item.font = .systemFont(ofSize: 14)
+            
+            item.font = .systemFont(ofSize:  isIpad() ? 16 : 14)
         }
         stack.clipsToBounds = true
-        
+        stack.backgroundColor = cellColor
         stack.axis = .vertical
         stack.spacing = 5
         stack.distribution = .fillEqually
+        
 //        name.text = "Name: \(model?.name ?? "Default name")"
 //        phoneNumber.text = "Phone number: \(model?.phone_number ?? "000-000-000")"
 //        skills.text = "Skills: "
