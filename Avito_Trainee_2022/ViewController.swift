@@ -27,11 +27,11 @@ final class ViewController: UIViewController {
                 let response = try await Network.shared.fetchData()
                 model = response
                 tableview.reloadData()
+                print("ROW HEIGHT: \(tableview.rowHeight)")
             } catch {
                 print(error.localizedDescription)
             }
         }
-        tableview.reloadData()
     }
     
     private func setConstraints() {
@@ -46,7 +46,7 @@ final class ViewController: UIViewController {
         tableview.showsVerticalScrollIndicator = false
         tableview.separatorColor = .red
         tableview.rowHeight = UITableView.automaticDimension
-        tableview.estimatedRowHeight = 44.3333
+        tableview.estimatedRowHeight = 80
         
     }
 }
@@ -77,5 +77,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         employee?.skills.forEach({ item in
             cell.skills.text! += "\(item) "
         })
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableview.estimatedRowHeight
     }
 }

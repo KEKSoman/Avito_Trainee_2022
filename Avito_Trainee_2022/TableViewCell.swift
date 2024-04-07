@@ -34,9 +34,9 @@ class TableviewCell: UITableViewCell {
     private func setConstraints() {
         addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        stack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        stack.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
     }
     
     private func setUI() {
@@ -46,9 +46,11 @@ class TableviewCell: UITableViewCell {
             item.textColor = .black
             item.font = .systemFont(ofSize: 14)
         }
-        stack.axis = .vertical
-        stack.spacing = 10
+        stack.clipsToBounds = true
         
+        stack.axis = .vertical
+        stack.spacing = 5
+        stack.distribution = .fillEqually
 //        name.text = "Name: \(model?.name ?? "Default name")"
 //        phoneNumber.text = "Phone number: \(model?.phone_number ?? "000-000-000")"
 //        skills.text = "Skills: "
